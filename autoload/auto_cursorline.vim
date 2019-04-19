@@ -12,6 +12,9 @@ let s:window = 2
 let s:status = s:disabled
 let s:timer_id = 0
 
+setlocal cursorline
+hi CursorLine guibg=#272c34
+
 function! auto_cursorline#cursor_moved() abort
   if s:status == s:window
     let s:status = s:cursor
@@ -20,7 +23,7 @@ function! auto_cursorline#cursor_moved() abort
   call auto_cursorline#timer_stop()
   call auto_cursorline#timer_start()
   if s:status == s:cursor
-    setlocal nocursorline
+    hi CursorLine guibg=#272c34
     let s:status = s:disabled
   endif
 endfunction
@@ -33,6 +36,7 @@ endfunction
 
 function! auto_cursorline#win_leave() abort
   setlocal nocursorline
+  hi CursorLine guibg=#272c34
   call auto_cursorline#timer_stop()
 endfunction
 
@@ -48,7 +52,7 @@ function! auto_cursorline#timer_stop() abort
 endfunction
 
 function! auto_cursorline#enable(timer_id) abort
-  setlocal cursorline
+  hi CursorLine guibg=#2C313C
   let s:status = s:cursor
   let s:timer_id = 0
 endfunction
