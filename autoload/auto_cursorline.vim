@@ -30,6 +30,7 @@ endfunction
 
 function! auto_cursorline#win_enter() abort
   setlocal cursorline
+  hi CursorLine guibg=#2C313C
   let s:status = s:window
   call auto_cursorline#timer_stop()
 endfunction
